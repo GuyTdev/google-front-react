@@ -1,6 +1,6 @@
 import React from 'react'
 import '../index.css'
-const Table = ({ rows, cols }) => {
+const Table = ({ rows, cols, dataarr}) => {
   console.log("rows, cols", rows, cols);
   return (
     <table>
@@ -14,8 +14,8 @@ const Table = ({ rows, cols }) => {
           Array.from({ length: rows }).map((_, rowIndex) =>
             <tr key={rowIndex}>
               {Array.from({ length: cols }).map((_, colIndex) =>
-                <td>
-                  {colIndex % 2 ? rows * (colIndex + 1) - rowIndex : rows * colIndex + rowIndex + 1}
+                <td key={colIndex}>
+                  {colIndex % 2 ? dataarr[rows * (colIndex + 1) - rowIndex -1] : dataarr[rows * colIndex + rowIndex]}
                 </td>)}
             </tr>)
         }
